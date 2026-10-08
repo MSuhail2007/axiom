@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PlaceLens — evidence-first place resolution</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar"><div class="brand"><span class="brand-icon">⌖</span> PlaceLens</div><span class="top-label">LOCAL PROTOTYPE · INDIA FOCUS</span></header>
+    <section class="hero">
+      <div class="eyebrow">PLACE NAME RESOLUTION</div>
+      <h1>Know where the story <em>happened.</em><br>Know why.</h1>
+      <p>Turn inconsistent place names in reports into reviewable locations. Every decision keeps its evidence, and uncertain mentions stay unresolved.</p>
+    </section>
+    <section class="workspace">
+      <div class="editor-panel">
+        <div class="panel-heading"><div><span class="step">01</span><h2>Source text</h2></div><span class="hint">English + regional scripts</span></div>
+        <label for="mode">Search mode</label>
+        <select id="mode"><option value="names">Place names — one per line or separated by commas</option><option value="document">Find places in a document</option></select>
+        <label for="country">Coverage</label>
+        <select id="country"><option value="IN">India</option><option value="">Worldwide (OpenStreetMap + local India catalog)</option></select>
+        <p class="hint">Every entered name gets a result. Below 80% spelling similarity, review the suggestions. Identical names may still need context.</p>
+        <textarea id="source" spellcheck="false" aria-label="Place names or source document">Bangalroe
+Kolkta
+New Deli</textarea>
+        <div class="sample-row"><span>TRY AN EXAMPLE</span><button data-sample="bihar">Bihar clue</button><button data-sample="unclear">No clue</button><button data-sample="typos">Misspellings</button><button data-sample="alias">Name variants</button><button data-sample="telangana">Telugu clue</button></div>
+        <label class="llm-option"><input id="use-osm" type="checkbox" checked><span>Include OpenStreetMap <small>Sends searched names to Photon. No API key. Up to 10 names per search within a time limit; results are cached.</small></span></label>
+        <label class="llm-option"><input id="use-llm" type="checkbox" disabled><span>Use LLM for unresolved cases <small id="llm-note">Requires API key; sends document context to OpenAI</small></span></label>
+        <button class="primary" id="resolve">Resolve places <span>→</span></button>
+      </div>
+      <div class="result-panel">
+        <div class="panel-heading"><div><span class="step">02</span><h2>Resolved places</h2></div><span id="count" class="hint">Ready to analyze</span></div>
+        <div id="results" class="results empty"><div class="empty-icon">◎</div><h3>Your results appear here</h3><p>Resolve the sample report to see candidate places and evidence.</p></div>
+      </div>
+    </section>
+    <footer><div><strong>Place data:</strong> <a href="https://www.geonames.org/" target="_blank" rel="noreferrer">GeoNames</a> (CC BY) + <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors</a> (ODbL), via Photon. Coverage is incomplete.</div><div id="status">Checking integrations…</div></footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
