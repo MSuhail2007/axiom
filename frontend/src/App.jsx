@@ -57,7 +57,7 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col h-full overflow-hidden">
+      <div className="flex-1 min-w-0 flex flex-col h-full overflow-hidden">
         {/* Top Header */}
         <Header
           activeTab={activeTab}
@@ -67,7 +67,7 @@ export default function App() {
         />
 
         {/* Dynamic Page Views */}
-        <main className="flex-1 overflow-y-auto">
+        <main className="studio-main flex-1 overflow-y-auto">
           {activeTab === 'dashboard' && (
             <DashboardPage
               onNavigateToAnalysis={setActiveTab}

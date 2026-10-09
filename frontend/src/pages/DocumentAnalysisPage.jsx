@@ -194,7 +194,7 @@ export default function DocumentAnalysisPage({ onSelectLocation, initialText = '
       {/* Main 2-Column Studio Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left Side: Input Panel (5 columns) */}
-        <div className="lg:col-span-5 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-5">
+        <div className="analysis-input-panel lg:col-span-5 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-5">
           <div className="flex items-center justify-between">
             <h3 className="font-bold text-slate-900 text-base flex items-center space-x-2">
               <FileText className="w-4 h-4 text-indigo-600" />

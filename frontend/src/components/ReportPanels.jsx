@@ -1,6 +1,7 @@
 import React from 'react';
+import {FileText, ScanText, MapPin, Fingerprint} from 'lucide-react';
 export function Metrics({data}) {
-  return <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">{[['Documents',data.documents_processed,'Unique input + options'],['Mentions',data.locations_detected,'From analyzed documents'],['Resolved',data.locations_standardized,'Suggestions excluded'],['Average similarity',`${data.avg_confidence}%`,'Name / alias match; not probability']].map(([label,value,note])=><div className="panel" key={label}><div className="text-xs uppercase tracking-wider font-semibold text-slate-500">{label}</div><div className="text-3xl font-bold text-slate-900 my-3">{value.toLocaleString()}</div><div className="text-xs text-slate-500">{note}</div></div>)} </div>;
+  return <div className="metric-grid">{[['Documents analyzed',data.documents_processed,'Unique inputs & options',FileText],['Places detected',data.locations_detected,'Mentions across documents',ScanText],['Places resolved',data.locations_standardized,'Suggestions excluded',MapPin],['Average similarity',`${data.avg_confidence}%`,'Name match · not probability',Fingerprint]].map(([label,value,note,Icon],i)=><div className="metric-card enter" style={{animationDelay:`${i*70}ms`}} key={label}><div className="metric-label">{label}<span className={`metric-icon tone-${i}`}><Icon size={17}/></span></div><div className="metric-value">{value?.toLocaleString()??'—'}</div><div className="metric-note"><span/>{note}</div></div>)}</div>;
 }
 export function Distributions({data}) {
   const methods=Object.entries(data.resolution_methods || {}), total=methods.reduce((n,[,count])=>n+count,0)||1;
