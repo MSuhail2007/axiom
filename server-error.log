@@ -1,8 +1,531 @@
-127.0.0.1 - - [08/Oct/2026 22:09:50] "POST /api/resolve HTTP/1.1" 200 -
-127.0.0.1 - - [08/Oct/2026 22:11:50] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [08/Oct/2026 22:11:50] "GET /style.css HTTP/1.1" 200 -
-127.0.0.1 - - [08/Oct/2026 22:11:50] "GET /app.js HTTP/1.1" 200 -
-127.0.0.1 - - [08/Oct/2026 22:11:50] "GET /api/status HTTP/1.1" 200 -
-127.0.0.1 - - [08/Oct/2026 22:12:46] "POST /api/resolve HTTP/1.1" 200 -
-127.0.0.1 - - [08/Oct/2026 22:13:15] "POST /api/review HTTP/1.1" 200 -
-127.0.0.1 - - [08/Oct/2026 22:14:14] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:45:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:45:12] "GET /assets/index-DH58Bi9o.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:45:12] "GET /assets/index-DhZSqjqs.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:45:12] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:45:12] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:45:12] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:45:22] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:45:22] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:45:22] "GET /api/v1/catalog?q=&offset=0&limit=40 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:45:34] "GET /api/v1/catalog?q=&offset=40&limit=40 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:51:10] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:51:10] "GET /assets/index-DH58Bi9o.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:51:10] "GET /assets/index-DhZSqjqs.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:51:10] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:51:10] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:51:10] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:51:16] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:51:16] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:51:16] "GET /api/v1/catalog?q=&offset=0&limit=40 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:51:34] "GET /api/v1/locations/1269519 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:52:04] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:52:04] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:52:04] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:52:12] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:52:12] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:53:31] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:53:31] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:53:31] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:53:36] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:53:36] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:53:36] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:53:56] "POST /api/v1/review/22992c5d3a005b16c11901e6b8c2bde5eded5816507ae0e1353ac67ffc1e9c47/decision HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:53:56] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:53:56] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:54:01] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:54:01] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:55:00] "POST /api/v1/standardize/upload HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:55:00] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:55:00] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:57:44] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:57:44] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:57:44] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:57:56] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:57:56] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:57:56] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:58:07] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:58:07] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 02:58:07] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 03:11:11] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 03:11:11] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 03:11:11] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 03:11:14] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 03:11:14] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 03:11:17] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 03:11:17] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 03:11:17] "GET /api/v1/catalog?q=&offset=0&limit=40 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 03:11:28] "GET /api/v1/locations/8659036 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 03:11:33] "GET /api/v1/locations/1254662 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 03:11:53] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 03:11:53] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 03:12:46] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 03:16:44] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:01:57] "POST /api/resolve HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 57680)
+Traceback (most recent call last):
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "C:\Program Files\Python314\Lib\http\server.py", line 496, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python314\Lib\http\server.py", line 484, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\Axiom\app.py", line 121, in do_POST
+    self.json(200, {"results": results, "text": text})
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Axiom\app.py", line 96, in json
+    self._send(status, json.dumps(payload, ensure_ascii=False).encode("utf-8"), "application/json; charset=utf-8")
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Axiom\app.py", line 39, in _send
+    self.wfile.write(body)
+    ~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+127.0.0.1 - - [09/Oct/2026 04:02:20] "POST /api/resolve HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 57464)
+Traceback (most recent call last):
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "C:\Program Files\Python314\Lib\http\server.py", line 496, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python314\Lib\http\server.py", line 484, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\Axiom\app.py", line 121, in do_POST
+    self.json(200, {"results": results, "text": text})
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Axiom\app.py", line 96, in json
+    self._send(status, json.dumps(payload, ensure_ascii=False).encode("utf-8"), "application/json; charset=utf-8")
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Axiom\app.py", line 39, in _send
+    self.wfile.write(body)
+    ~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+127.0.0.1 - - [09/Oct/2026 04:02:43] "POST /api/resolve HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 58483)
+Traceback (most recent call last):
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "C:\Program Files\Python314\Lib\http\server.py", line 496, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python314\Lib\http\server.py", line 484, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\Axiom\app.py", line 121, in do_POST
+    self.json(200, {"results": results, "text": text})
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Axiom\app.py", line 96, in json
+    self._send(status, json.dumps(payload, ensure_ascii=False).encode("utf-8"), "application/json; charset=utf-8")
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Axiom\app.py", line 39, in _send
+    self.wfile.write(body)
+    ~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+127.0.0.1 - - [09/Oct/2026 04:02:59] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:07:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:07:04] "GET /assets/index-DhZSqjqs.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:07:04] "GET /assets/index-DH58Bi9o.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:07:05] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:07:05] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:07:05] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:08:08] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:08:08] "GET /assets/index-DH58Bi9o.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:08:08] "GET /assets/index-DhZSqjqs.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:08:09] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:08:09] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:08:09] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:08:12] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:08:12] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:08:12] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:08:29] "POST /api/v1/review/4cf8245be8ce0104840b39cec838a9c4cc74f89fa697ee9d7a9ffca1d9ce6ed2/decision HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:08:29] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:08:29] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:08:44] "POST /api/v1/review/3d00529535ec90a65db9477aebaba8fb5999b64f17ac47d58ab278b103f60bfe/decision HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:08:44] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:08:44] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:15:22] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:15:22] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:21:02] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:22:14] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:22:29] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:26:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:26:56] "GET /assets/index-CBDx2kNK.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:26:56] "GET /assets/index-DhZSqjqs.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:26:57] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:26:57] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:26:57] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:41:11] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:41:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:41:14] "GET /assets/index-CBDx2kNK.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:41:14] "GET /assets/index-DhZSqjqs.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:41:14] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:41:14] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:41:14] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:41:48] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:43:15] "POST /api/resolve HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 60602)
+Traceback (most recent call last):
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "C:\Program Files\Python314\Lib\http\server.py", line 496, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python314\Lib\http\server.py", line 484, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\Axiom\app.py", line 121, in do_POST
+    self.json(200, {"results": results, "text": text})
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Axiom\app.py", line 96, in json
+    self._send(status, json.dumps(payload, ensure_ascii=False).encode("utf-8"), "application/json; charset=utf-8")
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Axiom\app.py", line 39, in _send
+    self.wfile.write(body)
+    ~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+127.0.0.1 - - [09/Oct/2026 04:43:37] "POST /api/resolve HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 56846)
+Traceback (most recent call last):
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "C:\Program Files\Python314\Lib\http\server.py", line 496, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python314\Lib\http\server.py", line 484, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\Axiom\app.py", line 121, in do_POST
+    self.json(200, {"results": results, "text": text})
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Axiom\app.py", line 96, in json
+    self._send(status, json.dumps(payload, ensure_ascii=False).encode("utf-8"), "application/json; charset=utf-8")
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Axiom\app.py", line 39, in _send
+    self.wfile.write(body)
+    ~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+127.0.0.1 - - [09/Oct/2026 04:44:03] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:44:12] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:44:32] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:23] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:31] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:31] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:33] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:33] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:33] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:33] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:34] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:34] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:34] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:35] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:35] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:37] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:37] "GET /api/v1/catalog?q=&offset=0&limit=40 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:38] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:38] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:38] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:38] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:38] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:45:53] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:46:06] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:46:36] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:46:41] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:47:00] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:48:49] "POST /api/resolve HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 60386)
+Traceback (most recent call last):
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "C:\Program Files\Python314\Lib\http\server.py", line 496, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python314\Lib\http\server.py", line 484, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\Axiom\app.py", line 121, in do_POST
+    self.json(200, {"results": results, "text": text})
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Axiom\app.py", line 96, in json
+    self._send(status, json.dumps(payload, ensure_ascii=False).encode("utf-8"), "application/json; charset=utf-8")
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Axiom\app.py", line 39, in _send
+    self.wfile.write(body)
+    ~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Program Files\Python314\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+127.0.0.1 - - [09/Oct/2026 04:49:01] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:51:22] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:52:16] "POST /api/v1/standardize/upload HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:25] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:40] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:40] "GET /assets/index-CBDx2kNK.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:40] "GET /assets/index-DhZSqjqs.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:40] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:40] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:40] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:42] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:42] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:46] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:46] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:46] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:48] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:48] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:48] "GET /api/v1/catalog?q=&offset=0&limit=40 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:49] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:49] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:49] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:50] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:53:50] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:54:16] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:55:10] "POST /api/v1/standardize/upload HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:57:40] "POST /api/v1/standardize/upload HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:57:40] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:57:46] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:57:46] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 04:57:50] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:15:25] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:01] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:02] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:02] "GET /assets/index-CrnC-a4d.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:02] "GET /assets/index-CDoom7zp.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:02] "GET /sthalam-logo.png HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 05:17:03] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:03] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:03] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /assets/index-CrnC-a4d.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /assets/index-CDoom7zp.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /sthalam-logo.png HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /assets/index-CrnC-a4d.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /assets/index-CDoom7zp.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /sthalam-logo.png HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /assets/index-CrnC-a4d.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /assets/index-CDoom7zp.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /sthalam-logo.png HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /assets/index-CrnC-a4d.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /assets/index-CDoom7zp.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /sthalam-logo.png HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /assets/index-CrnC-a4d.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /assets/index-CDoom7zp.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /sthalam-logo.png HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:12] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:18] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:17:55] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:18:12] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:18:20] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:18:39] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:18:47] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:21:45] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:21:45] "GET /assets/index-CrnC-a4d.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:21:45] "GET /assets/index-CDoom7zp.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:21:45] "GET /sthalam-logo.png HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 05:21:45] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:21:45] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:21:45] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:39:44] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:40:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:40:36] "GET /assets/index-CrnC-a4d.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:40:36] "GET /assets/index-CDoom7zp.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:40:36] "GET /sthalam-logo.png HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 05:40:36] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:40:36] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:40:36] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:41:17] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:41:17] "GET /assets/index-CrnC-a4d.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:41:17] "GET /assets/index-CDoom7zp.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:41:17] "GET /sthalam-logo.png HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 05:41:17] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:41:17] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:41:17] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:44:09] "GET /sthalam-logo.png HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 05:44:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:44:14] "GET /assets/index-CrnC-a4d.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:44:14] "GET /assets/index-CDoom7zp.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:44:15] "GET /sthalam-logo.png HTTP/1.1" 404 -
+127.0.0.1 - - [09/Oct/2026 05:44:15] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:44:15] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:44:15] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:45:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:45:14] "GET /assets/index-DrlPqQ7q.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:45:14] "GET /assets/index-CDoom7zp.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:45:14] "GET /assets/sthalam-logo.png HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:45:14] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:45:14] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:45:14] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:45:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:45:54] "GET /assets/index-DrlPqQ7q.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:45:54] "GET /assets/index-CDoom7zp.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:45:55] "GET /assets/sthalam-logo.png HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:45:55] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:45:55] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:45:55] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:46:00] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:46:00] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:47:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:47:24] "GET /assets/index-DrlPqQ7q.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:47:24] "GET /assets/index-CDoom7zp.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:47:24] "GET /assets/sthalam-logo.png HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:47:24] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:47:24] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:47:25] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:47:25] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:47:25] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:52:17] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:52:31] "POST /api/v1/standardize/upload HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:52:31] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:52:32] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:53:09] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:53:22] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:53:33] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:57:00] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:57:12] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:57:22] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:58:39] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:58:39] "GET /api/v1/locations/1273800 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:59:13] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:59:13] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 05:59:13] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:05:53] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:05:53] "GET /assets/index-CbRuc0ig.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:05:53] "GET /assets/index-wmfoo25R.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:05:53] "GET /assets/sthalam-logo.png HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:05:53] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:05:53] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:05:53] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:06:07] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:06:08] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:06:09] "GET /api/v1/catalog?q=&offset=0&limit=40 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:06:10] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:06:10] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:06:10] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:06:23] "GET /api/v1/locations/search?q=madras&limit=6 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:07:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:07:21] "GET /assets/index-Bfcw_dw3.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:07:21] "GET /assets/index-wmfoo25R.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:07:21] "GET /assets/sthalam-logo.png HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:07:21] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:07:21] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:07:21] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:07:32] "GET /api/v1/locations/search?q=madras&limit=6 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:07:37] "GET /api/v1/locations/1264527 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:11:32] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:11:55] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:11:56] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:12:19] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 06:12:54] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:14:06] "POST /api/resolve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:14:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:14:09] "GET /assets/index-H7vaQ3oL.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:14:09] "GET /assets/index-wmfoo25R.css HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:14:09] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:14:09] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:14:09] "GET /assets/sthalam-logo.png HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:14:10] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:14:15] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:14:15] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:14:50] "POST /api/v1/standardize/upload HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:14:51] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:14:51] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:16:00] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:16:00] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:16:01] "GET /api/v1/catalog?q=&offset=0&limit=40 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:16:13] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:16:13] "GET /api/v1/analytics/overview HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:16:13] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:16:23] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:16:23] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:16:23] "GET /api/v1/review/queue HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:17:21] "POST /api/v1/review/7f1de53d4814742528b7d00d0505881b3c350607b46f853a47571579defe0927/decision HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:17:21] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [09/Oct/2026 07:17:21] "GET /api/v1/review/queue HTTP/1.1" 200 -

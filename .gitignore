@@ -5,3 +5,7 @@ data/*.sqlite-*
 data/*.zip
 .uv-cache/
 .venv/
+frontend/node_modules/
+frontend/dist/
+photon/
+*.log

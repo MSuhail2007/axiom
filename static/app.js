@@ -45,7 +45,7 @@ async function run() {
 }
 
 function render(items) {
-  count.textContent = `${items.length} mention${items.length === 1 ? '' : 's'} found`;
+  count.textContent = `${items.length} mentions · ${items[0]?.input_mode === 'document' ? 'Document' : 'Place names'}`;
   results.className = 'results'; results.replaceChildren();
   if (!items.length) {
     results.className = 'results empty';
@@ -54,10 +54,10 @@ function render(items) {
   }
   items.forEach((item, index) => {
     const card = el('article', 'card ' + item.status);
-    const top = el('div','card-top'); top.append(el('div','mention',item.mention), el('span','pill ' + (item.needs_review ? 'warn' : ''), item.needs_review ? 'Review' : 'Resolved'));
+    const top = el('div','card-top'); top.append(el('div','mention',item.mention), el('span','pill ' + (item.needs_review ? 'warn' : ''), item.status === 'out_of_scope' ? 'Outside India' : item.needs_review ? 'Review' : 'Resolved'));
     card.append(top);
-    card.append(el('div','evidence-title', `${item.score}% spelling similarity${item.suggestions_required ? ' · Below 80%: review suggestions' : ''}`));
-    const place = item.selected ? placeLabel(item.selected) : 'Unresolved — more context needed';
+    card.append(el('div','evidence-title', item.score === null ? 'Not scored — outside coverage' : `${item.score}% name / alias similarity${item.suggestions_required ? ' · Below 80%: review suggestions' : ''}`));
+    const place = item.selected ? `${placeLabel(item.selected)} · ${item.selected.kind}` : item.status === 'out_of_scope' ? 'Outside India coverage' : 'Unresolved — more context needed';
     card.append(el('div','chosen',place));
     card.append(el('div','evidence-title','Evidence · ' + item.method));
     item.evidence.forEach(e => {

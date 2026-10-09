@@ -1,4 +1,12 @@
-# PlaceLens
+# STHALAM + PlaceLens
+
+The STHALAM React frontend is merged into this workspace, backed by PlaceLens's local India resolver. It includes document analysis, highlighted mentions, an inspector with candidate scores and sources, a location explorer, a persistent review queue, real analytics, and JSON export. TXT, DOCX and text-based PDF uploads are parsed locally (10 MB, 100 PDF pages, 20,000 extracted characters). Scanned PDFs require OCR beforehand.
+
+The original STHALAM source in Downloads remains unchanged. Its demo backend, synthetic statistics and external fonts are not used. The app uses the existing local GeoNames database and India Photon service. Transport codes BLR, MAA, BOM and CCU are curated city aliases; coordinates describe the city, not airport terminals. Short codes can require review.
+
+Start the existing India Photon service as before, then run `.venv\Scripts\python.exe app.py` from `D:\Axiom` and open http://127.0.0.1:8765. The production frontend is already built. After frontend edits, run `npm run build` from `D:\Axiom\frontend`; the development server uses port 5173 and proxies to the Python server. The older interface remains at `/legacy`.
+
+Analyses and pending reviews are stored in `data/workspace.sqlite`; approved corrections use `data/reviews.sqlite`. Repeating the same text, mode and source setting replaces its analytics snapshot. Review confirmation applies to the existing resolver's context key; reanalyze to update a document snapshot. REST endpoints under `/api/v1` are documented in the app. All HTTP resolution routes enforce India-only, local processing with LLM calls disabled.
 
 PlaceLens resolves place names in Indian news and records while showing the evidence behind each choice. It keeps ambiguous mentions unresolved when the document does not support a decision. A review action can save a context-scoped correction for future runs.
 
@@ -31,9 +39,15 @@ python -m pip install -r requirements-optional.txt
 python -m spacy download en_core_web_sm
 ```
 
-Set `OPENAI_API_KEY` to enable the optional LLM checkbox for unresolved candidate sets. Set `PLACELENS_MODEL` to choose a supported model; the default is `gpt-4o-mini`. When the checkbox is selected, the app sends nearby document text, the mention, and candidate list to the API only when local evidence cannot resolve it. It accepts only a candidate ID or an abstention, and checks that quoted evidence appears in the document and distinguishes candidates. API calls have cost and require network access. Without a key, review remains fully usable.
+The resolver library retains an optional LLM implementation for earlier experiments, but the local application disables it for every HTTP request, regardless of API-key environment variables.
 
 ## Review and evaluation
+
+The default input mode is Automatic. Paragraphs are extracted as documents; long prose pasted into Place names mode is also treated as a document, rather than searched as comma-separated sentence fragments. Historical aliases are matched against the downloaded GeoNames aliases. Exact matches remain exact when Photon adds candidates. Dominant-city choices with namesakes remain reviewable suggestions, even at 100% alias similarity.
+
+The catalog now also imports rivers, coasts, regions, plateaus, and districts from the existing India dump. `add_geography` in `import_geonames.py` can extend an existing database without replacing its city records or reviews. Region coordinates are representative points, not boundaries. Document clues are scoped to their paragraph. Known out-of-India references are annotated instead of being corrected to Indian places; the scope annotation vocabulary is limited, not a worldwide gazetteer.
+
+Local Photon queries are deduplicated per document and are no longer subject to the old public-service ten-query cutoff or one-second delay. The cache includes the endpoint in its key, so older public-service responses are not reused as local results. The complete historical report supplied by the user is a regression fixture in `tests/historical_report.txt`.
 
 Review decisions are stored in `data/reviews.sqlite`. A correction applies to the same normalized mention and document context key (state or country), rather than globally overwriting an alias. Spelling matches are shown as suggestions requiring review. The app also exposes `POST /api/resolve` and `POST /api/review` for integration.
 
@@ -45,7 +59,7 @@ Run the included checks with `python -m unittest discover -s tests -v`. `python 
 
 Use **Place names** mode for arbitrary misspellings: enter one name per line, comma, or semicolon. Every nonempty entry returns a result, even when there is no match. **Document** mode extracts likely mentions and can still miss names. Full spelling search examines every local alias, without prefix/suffix restrictions or a minimum similarity cutoff. The UI lists candidate names, sources, and scores. Scores are normalized character similarity (best stored alias for GeoNames, returned name for Photon), not calibrated probabilities. Below 80%, automatic selection is blocked and suggestions require review. Higher scores can also require review when names are ambiguous. Human-confirmed choices retain their original spelling score.
 
-The authorized second source is **OpenStreetMap via Photon**, enabled in the UI and optional per API request (`use_osm: true`). It sends searched place names, not document bodies. The public demo requires no key or paid account, but has no availability guarantee and can throttle heavy use: see [Photon terms and documentation](https://github.com/komoot/photon#demo-server). No paid service has been configured. Results are cached for seven days in `data/photon.sqlite`; saved OSM place records support human corrections. Requests are serialized to at most one per second, with a six-second network timeout and a per-resolution budget of ten names and about fifteen seconds (an in-flight request may finish later). Skipped or failed external searches are visible in each result. Select India or worldwide coverage; the local imported dataset remains India-focused. Production volume would require a separately approved hosted service or self-hosting.
+The authorized second source is **OpenStreetMap via a local Photon server**, enabled in the UI and optional per API request (`use_osm: true`). Searched names are sent only to `http://127.0.0.1:2322`; the client rejects non-local Photon URLs. Results are cached for seven days in `data/photon.sqlite`; saved OSM place records support human corrections. The UI is intentionally India-only and uses the India Photon extract plus the imported India GeoNames dataset.
 
 OpenStreetMap data is attributed to [OpenStreetMap contributors](https://www.openstreetmap.org/copyright) under ODbL. Neither source guarantees all places, and severe typos may have several plausible corrections.
 

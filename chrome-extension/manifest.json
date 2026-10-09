@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "STHALAM — Local Place Finder",
+  "version": "1.3.0",
+  "minimum_chrome_version": "116",
+  "description": "Automatically annotate webpage place names using your existing local India resolver.",
+  "permissions": ["activeTab", "scripting", "contextMenus", "storage"],
+  "host_permissions": ["http://127.0.0.1/*"],
+  "action": {"default_title": "STHALAM: local place clarity", "default_popup": "panel.html", "default_icon": {"16": "assets/sthalam-logo.png", "32": "assets/sthalam-logo.png", "48": "assets/sthalam-logo.png", "128": "assets/sthalam-logo.png"}},
+  "icons": {"16": "assets/sthalam-logo.png", "32": "assets/sthalam-logo.png", "48": "assets/sthalam-logo.png", "128": "assets/sthalam-logo.png"},
+  "background": {"service_worker": "background.js", "type": "module"},
+  "content_scripts": [{
+    "matches": ["http://*/*", "https://*/*", "file:///*"],
+    "exclude_matches": ["http://127.0.0.1/*", "http://localhost/*"],
+    "js": ["scanner-core.js", "content.js"],
+    "run_at": "document_idle",
+    "all_frames": false
+  }],
+  "content_security_policy": {"extension_pages": "default-src 'self'; script-src 'self'; style-src 'self'; connect-src http://127.0.0.1:8765; object-src 'none'"}
+}

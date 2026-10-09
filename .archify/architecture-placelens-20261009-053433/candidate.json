@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "PlaceLens local place-resolution architecture",
+    "subtitle": "The committed core routes browser requests through one local API, evidence-first resolution, and local data stores",
+    "output": "placelens-architecture.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/MSuhail2007/axiom.git",
+      "provider": "github",
+      "revision": "5076d9c10fb15096bb5b371d4dc5dbbba2923848",
+      "link_mode": "web"
+    }
+  },
+  "components": [
+    {
+      "id": "reader",
+      "type": "external",
+      "label": "Reader / reviewer",
+      "sublabel": "Enters text · inspects evidence",
+      "icon": "person",
+      "pos": [40, 280],
+      "size": [160, 76]
+    },
+    {
+      "id": "browser_ui",
+      "type": "frontend",
+      "label": "PlaceLens browser UI",
+      "sublabel": "Static HTML + JavaScript",
+      "tag": "local browser",
+      "sources": [
+        { "path": "static/index.html", "line": 10, "end_line": 40, "label": "input and result panels" },
+        { "path": "static/app.js", "line": 3, "end_line": 38, "label": "resolve request" }
+      ],
+      "pos": [330, 280],
+      "size": [190, 82]
+    },
+    {
+      "id": "api",
+      "type": "backend",
+      "label": "Local HTTP API",
+      "sublabel": "127.0.0.1:8765",
+      "tag": "routing + health",
+      "sources": [
+        { "path": "app.py", "line": 15, "end_line": 39, "label": "static and status routes" },
+        { "path": "app.py", "line": 41, "end_line": 66, "label": "POST resolve and review" }
+      ],
+      "pos": [650, 280],
+      "size": [190, 82]
+    },
+    {
+      "id": "resolver",
+      "type": "backend",
+      "label": "Evidence-first resolver",
+      "sublabel": "Extract · match · score · abstain",
+      "tag": "80% review threshold",
+      "sources": [
+        { "path": "resolver.py", "line": 122, "end_line": 196, "label": "catalog and NER extraction" },
+        { "path": "resolver.py", "line": 198, "end_line": 248, "label": "resolution pipeline" },
+        { "path": "resolver.py", "line": 265, "end_line": 346, "label": "context and review scoring" }
+      ],
+      "pos": [1005, 280],
+      "size": [210, 88]
+    },
+    {
+      "id": "catalog",
+      "type": "database",
+      "label": "GeoNames catalog",
+      "sublabel": "Aliases · places · fuzzy index",
+      "tag": "India dataset",
+      "sources": [
+        { "path": "catalog.py", "line": 48, "end_line": 79, "label": "bundled data and SQLite setup" },
+        { "path": "catalog.py", "line": 91, "end_line": 145, "label": "exact and fuzzy lookup" }
+      ],
+      "pos": [1005, 100],
+      "size": [210, 82]
+    },
+    {
+      "id": "photon",
+      "type": "backend",
+      "label": "Local Photon adapter",
+      "sublabel": "Optional OpenStreetMap enrichment",
+      "tag": "loopback only",
+      "sources": [
+        { "path": "photon.py", "line": 18, "end_line": 39, "label": "local endpoint and cache" },
+        { "path": "photon.py", "line": 40, "end_line": 88, "label": "search, normalize, store" }
+      ],
+      "pos": [1005, 500],
+      "size": [210, 82]
+    },
+    {
+      "id": "review_db",
+      "type": "database",
+      "label": "Review SQLite",
+      "sublabel": "Context-scoped human choices",
+      "sources": [
+        { "path": "resolver.py", "line": 99, "end_line": 119, "label": "review reads and writes" }
+      ],
+      "pos": [650, 500],
+      "size": [200, 82]
+    },
+    {
+      "id": "photon_db",
+      "type": "database",
+      "label": "Photon cache SQLite",
+      "sublabel": "Responses + saved OSM places",
+      "sources": [
+        { "path": "photon.py", "line": 18, "end_line": 23, "label": "cache tables" },
+        { "path": "photon.py", "line": 84, "end_line": 88, "label": "place record writes" }
+      ],
+      "pos": [1223, 500],
+      "size": [210, 82]
+    }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "Browser", "wraps": ["reader", "browser_ui"] },
+    { "kind": "region", "label": "Local PlaceLens process", "wraps": ["api", "resolver", "catalog", "photon", "review_db", "photon_db"] }
+  ],
+  "connections": [
+    { "id": "reader-input", "from": "reader", "to": "browser_ui", "label": "text / review action", "variant": "emphasis" },
+    { "id": "ui-request", "from": "browser_ui", "to": "api", "label": "POST /api/resolve", "variant": "emphasis" },
+    { "id": "api-resolve", "from": "api", "to": "resolver", "label": "resolve(text, mode, country)" },
+    { "id": "resolver-catalog", "from": "resolver", "to": "catalog", "label": "exact aliases + fuzzy matches", "fromSide": "top", "toSide": "bottom" },
+    { "id": "resolver-photon", "from": "resolver", "to": "photon", "label": "optional local search", "fromSide": "bottom", "toSide": "top" },
+    { "id": "resolver-review", "from": "resolver", "to": "review_db", "label": "save context-scoped choice", "fromSide": "bottom", "toSide": "top" },
+    { "id": "photon-db", "from": "photon", "to": "photon_db", "label": "cache response / place", "fromSide": "right", "toSide": "top" },
+    { "id": "api-results", "from": "api", "to": "browser_ui", "label": "JSON results + evidence", "variant": "dashed", "fromSide": "top", "toSide": "top" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "Primary request path", "items": ["The browser sends text to the local API; no hosted resolver is required.", "The API returns candidates, evidence, scores, and review state to the browser."] },
+    { "dot": "violet", "title": "Resolution policy", "items": ["GeoNames aliases are searched first, then fuzzy spelling candidates are scored.", "A score below 80% or unresolved ambiguity remains a review suggestion."] },
+    { "dot": "emerald", "title": "Local persistence and enrichment", "items": ["Context-scoped human choices and Photon responses are stored in SQLite.", "Photon is optional per request; the committed adapter defaults to the Photon service endpoint."] }
+  ]
+}

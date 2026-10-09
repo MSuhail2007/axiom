@@ -33,3 +33,11 @@ class PhotonTests(unittest.TestCase):
         self.assertEqual(hits, ())
         self.assertIn("unavailable", note)
         self.assertEqual(self.client.db.execute("SELECT COUNT(*) FROM cache").fetchone()[0], 0)
+
+    def test_loopback_lookalike_hostname_is_rejected(self):
+        with patch.dict("os.environ", {"PLACELENS_PHOTON_URL": "http://localhost.example.com/api"}):
+            with patch("urllib.request.urlopen") as request:
+                hits, note = self.client.search("chennai")
+        self.assertEqual(hits, ())
+        self.assertIn("unavailable", note)
+        request.assert_not_called()

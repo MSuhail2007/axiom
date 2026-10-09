@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "700f9f19-4419-4e1d-a898-1c286a97803a",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "D:\\Axiom\\.archify\\architecture-placelens-20261009-053433\\candidate.json",
+  "output": "D:\\Axiom\\.archify\\architecture-placelens-20261009-053433\\placelens-architecture.html",
+  "specification": {
+    "sha256": "599e85e709e1d6dcad9e46664aa2f704fa1cf52365d68f50b9dac3d401f40637",
+    "bytes": 5967
+  },
+  "artifact": {
+    "sha256": "1ae932672bb7f7706bce6821316d6fcca5214ae4bd22e93e4cd541d8d4c1e94b",
+    "bytes": 765798
+  }
+}

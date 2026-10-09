@@ -78,9 +78,34 @@ def import_file(source: Path, destination: Path | None = None) -> tuple[int, int
             db.commit()
     db.execute("CREATE INDEX aliases_prefix ON aliases (first_two, alias_len)")
     db.execute("CREATE INDEX aliases_suffix ON aliases (last_two, alias_len)")
+    db.execute("CREATE INDEX aliases_place_id ON aliases (place_id)")
     db.commit()
     db.close()
+    add_geography(source, destination)
     return places, aliases
+
+
+def add_geography(source: Path, destination: Path) -> int:
+    """Extend an existing catalog without replacing settlements or user reviews."""
+    kinds = {"STM": "river", "CST": "coast", "RGN": "region", "RGNH": "historical region",
+             "PLAT": "plateau", "ADM2": "district"}
+    rows = [row for row in csv.reader(lines(source), delimiter="\t")
+            if len(row) >= 15 and row[7] in kinds]
+    with sqlite3.connect(destination) as db:
+        for row in rows:
+            kind = kinds[row[7]]
+            name = row[1]
+            db.execute("INSERT OR IGNORE INTO places VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                       (row[0], name, "", "India", float(row[4]), float(row[5]), int(row[14] or 0), kind))
+            names = {name, row[2], *row[3].split(",")}
+            if kind == "river":
+                names.update(n.removesuffix(" River") for n in list(names))
+            for value in names:
+                alias = normalize(value)
+                if alias and len(alias) <= 100:
+                    db.execute("INSERT OR IGNORE INTO aliases VALUES (?, ?, ?, ?, ?)",
+                               (alias, row[0], alias[:2], alias[-2:], len(alias)))
+    return len(rows)
 
 
 if __name__ == "__main__":

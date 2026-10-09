@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import sqlite3
 import unicodedata
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from functools import lru_cache
 from pathlib import Path
 
@@ -51,10 +51,10 @@ BUNDLED = [
     Place("1278149", "Aurangabad", "Maharashtra", "India", 19.8776, 75.3423, ("Aurangabad", "Aurangābād", "औरंगाबाद", "Chhatrapati Sambhajinagar")),
     Place("1269843", "Hyderabad", "Telangana", "India", 17.3841, 78.4564, ("Hyderabad", "Hyd", "HYD", "हैदराबाद", "హైదరాబాద్")),
     Place("1176734", "Hyderabad", "Sindh", "Pakistan", 25.3969, 68.3772, ("Hyderabad", "Hyderābād", "Hyd")),
-    Place("1275339", "Mumbai", "Maharashtra", "India", 19.0728, 72.8826, ("Mumbai", "Bombay", "मुंबई")),
-    Place("1277333", "Bengaluru", "Karnataka", "India", 12.9762, 77.6033, ("Bengaluru", "Bangalore", "Bluru", "B'luru", "ಬೆಂಗಳೂರು")),
-    Place("1264527", "Chennai", "Tamil Nadu", "India", 13.0878, 80.2785, ("Chennai", "Madras", "சென்னை")),
-    Place("1275004", "Kolkata", "West Bengal", "India", 22.5626, 88.3630, ("Kolkata", "Calcutta", "কলকাতা")),
+    Place("1275339", "Mumbai", "Maharashtra", "India", 19.0728, 72.8826, ("Mumbai", "Bombay", "BOM", "मुंबई")),
+    Place("1277333", "Bengaluru", "Karnataka", "India", 12.9762, 77.6033, ("Bengaluru", "Bangalore", "BLR", "Bluru", "B'luru", "ಬೆಂಗಳೂರು")),
+    Place("1264527", "Chennai", "Tamil Nadu", "India", 13.0878, 80.2785, ("Chennai", "Madras", "MAA", "சென்னை")),
+    Place("1275004", "Kolkata", "West Bengal", "India", 22.5626, 88.3630, ("Kolkata", "Calcutta", "CCU", "কলকাতা")),
     Place("1261481", "New Delhi", "Delhi", "India", 28.6358, 77.2245, ("New Delhi", "नई दिल्ली")),
     Place("1269515", "Jaipur", "Rajasthan", "India", 26.9196, 75.7878, ("Jaipur", "जयपुर")),
     Place("1260086", "Patna", "Bihar", "India", 25.5941, 85.1376, ("Patna", "पटना")),
@@ -80,7 +80,12 @@ class Catalog:
 
     def get(self, place_id: str) -> Place | None:
         if place_id in self.places:
-            return self.places[place_id]
+            place = self.places[place_id]
+            if self.conn:
+                row = self.conn.execute("SELECT population FROM places WHERE id=?", (place_id,)).fetchone()
+                if row:
+                    place = replace(place, population=row[0])
+            return place
         if self.conn:
             row = self.conn.execute("SELECT * FROM places WHERE id=?", (place_id,)).fetchone()
             if row:

@@ -60,6 +60,8 @@ LOCATION_CUES = {"in", "near", "from", "at", "to", "around", "outside", "within"
 SCAN_STOPWORDS = {"about", "after", "also", "among", "before", "between", "could", "district", "during", "flooding", "government", "heavy", "however", "india", "indian", "later", "local", "officials", "people", "police", "reports", "report", "rescue", "several", "state", "storm", "their", "there", "these", "those", "today", "tomorrow", "traffic", "weather", "where", "while", "would", "yesterday"}
 ADMIN_TERMS = {normalize(alias) for group in (*STATE_ALIASES.values(), *COUNTRY_ALIASES.values()) for alias in group}
 ADMIN_SKIP = {normalize(alias) for group in COUNTRY_ALIASES.values() for alias in group}
+# Scope annotations do not geocode foreign names into similarly spelled Indian villages.
+OUTSIDE_INDIA = {"europe", "africa", "antarctica", "north america", "south america", "lancashire"}
 
 
 def has_term(text: str, term: str) -> bool:
@@ -141,13 +143,22 @@ class Resolver:
     def extract(self, text: str) -> list[Mention]:
         found: list[Mention] = []
         for alias in self._patterns:
-            for match in re.finditer(r"(?<!\w)" + re.escape(alias) + r"(?!\w)", text, re.IGNORECASE):
+            flags = 0 if alias in {"BLR", "BOM", "MAA", "CCU"} else re.IGNORECASE
+            for match in re.finditer(r"(?<!\w)" + re.escape(alias) + r"(?!\w)", text, flags):
                 found.append(Mention(match.group(), match.start(), match.end(), "alias"))
+        ordinary = set()
         if self._nlp:
-            for ent in self._nlp(text).ents:
+            doc = self._nlp(text)
+            if hasattr(doc, "__iter__"):
+                ordinary = {token.idx for token in doc if token.pos_ not in {"PROPN", "X"}}
+            for ent in doc.ents:
+                if ent.label_ in {"ORG", "PERSON", "DATE", "TIME", "MONEY", "CARDINAL", "ORDINAL", "QUANTITY"} and not self.catalog.lookup(ent.text):
+                    if hasattr(ent, "__iter__"):
+                        ordinary.update(token.idx for token in ent)
                 if ent.label_ in {"GPE", "LOC", "FAC"} and normalize(ent.text) not in ADMIN_SKIP:
-                    found.append(Mention(ent.text, ent.start_char, ent.end_char, "ner"))
-        found.extend(self._spelling_mentions(text))
+                    trimmed = re.sub(r"^(?:the|a|an)\s+", "", ent.text, flags=re.IGNORECASE)
+                    found.append(Mention(trimmed, ent.end_char - len(trimmed), ent.end_char, "ner"))
+        found.extend(self._spelling_mentions(text, ordinary))
         found.sort(key=lambda m: (m.start, -(m.end - m.start), m.source != "ner"))
         selected: list[Mention] = []
         for mention in found:
@@ -155,12 +166,14 @@ class Resolver:
                 selected.append(mention)
         return selected
 
-    def _spelling_mentions(self, text: str) -> list[Mention]:
+    def _spelling_mentions(self, text: str, ordinary: set[int] | None = None) -> list[Mention]:
         """Find likely Latin-script names even when NER misses their misspellings."""
         words = list(LATIN_WORD.finditer(text))
         found = []
         for index, word in enumerate(words):
             token = word.group().strip(".'’- ")
+            if ordinary and word.start() in ordinary:
+                continue
             if token.casefold() in SCAN_STOPWORDS:
                 continue
             previous = words[index - 1].group().lower().strip(".'’- ") if index else ""
@@ -177,11 +190,11 @@ class Resolver:
                 phrase = text[word.start():words[end_index].end()].strip(".'’- ")
                 if not phrase or normalize(phrase) in ADMIN_SKIP:
                     continue
-                if cue and end_index == index:
+                if cue and token[:1].isupper() and end_index == index:
                     found.append(Mention(phrase, word.start(), word.start() + len(phrase), "location cue"))
                 exact = self.catalog.lookup(phrase)
                 if exact:
-                    if cue or any(p.id in self.catalog.places or p.population >= 1000 for p in exact):
+                    if cue or any(p.id in self.catalog.places or p.population >= 1000 or p.kind != "city" for p in exact):
                         found.append(Mention(phrase, word.start(), word.start() + len(phrase), "gazetteer scan"))
                     continue
                 hits = self.catalog.fuzzy_matches(phrase, 3)
@@ -203,8 +216,12 @@ class Resolver:
             raise ValueError("Unknown search mode")
         if country not in {"", "IN"}:
             raise ValueError("Choose India or worldwide coverage")
+        # Long prose must never become comma-separated fuzzy searches of sentence fragments.
+        prose = len(text.split()) > 12 and bool(re.search(r"[.!?](?:\s|$)", text))
         if mode == "auto":
-            mode = "names" if len(text.split()) <= 4 and not re.search(r"[.!?]", text) else "document"
+            mode = "document" if re.search(r"[.!?](?:\s|$)", text) else "names"
+        elif mode == "names" and prose:
+            mode = "document"
         if mode == "names":
             mentions = [Mention(m.group().strip(), m.start() + len(m.group()) - len(m.group().lstrip()),
                                 m.end() - len(m.group()) + len(m.group().rstrip()), "entered name")
@@ -213,14 +230,26 @@ class Resolver:
                 raise ValueError("Search up to 100 place names at a time")
         else:
             mentions = self.extract(text)
-        states, countries = context_clues(text) if use_context else ({}, {})
         output = []
-        external_count, external_start = 0, time.monotonic()
+        local_queries = {}
         for mention in mentions:
+            # Geographic clues in another paragraph must not choose this mention's location.
+            before = text.rfind("\n\n", 0, mention.start)
+            after = text.find("\n\n", mention.end)
+            paragraph = text[before + 2 if before >= 0 else 0:after if after >= 0 else len(text)]
+            states, countries = context_clues(paragraph) if use_context else ({}, {})
+            if country == "IN" and normalize(mention.text) in OUTSIDE_INDIA:
+                output.append({"mention": mention.text, "start": mention.start, "end": mention.end,
+                    "source": mention.source, "status": "out_of_scope", "selected": None, "candidates": [],
+                    "score": None, "method": "outside India coverage", "threshold": 80,
+                    "suggestions_required": False, "needs_review": False, "input_mode": mode,
+                    "evidence": [{"quote": mention.text, "basis": "Recognized foreign geographic name; not matched to Indian places"}]})
+                continue
             candidates = self.catalog.lookup(mention.text)
             if country:
                 candidates = [p for p in candidates if p.country == "India"]
             match_type = "exact alias"
+            exact_candidates = list(candidates)
             fuzzy_hits = ()
             if not candidates:
                 fuzzy_hits = self.catalog.fuzzy_matches(mention.text, 10, broad=True)
@@ -231,18 +260,16 @@ class Resolver:
                 candidates = [p for p in candidates if p.country == "India"]
             source_note = "Local GeoNames catalog searched"
             if use_osm:
-                if external_count < 10 and time.monotonic() - external_start < 15:
-                    if self.photon is None:
-                        self.photon = Photon()
-                    external, source_note = self.photon.search(mention.text, country)
-                    external_count += 1
-                    if external:
-                        local = fuzzy_hits or tuple(FuzzyMatch(p, mention.text, 1.0) for p in candidates)
-                        fuzzy_hits = tuple(sorted((*local, *external), key=lambda h: -h.score))
-                        candidates = [hit.place for hit in fuzzy_hits]
-                        match_type = "name similarity across sources"
-                else:
-                    source_note = "OpenStreetMap skipped: request budget reached; search this name separately"
+                if self.photon is None:
+                    self.photon = Photon()
+                query_key = normalize(mention.text)
+                if query_key not in local_queries:
+                    local_queries[query_key] = self.photon.search(mention.text, country)
+                external, source_note = local_queries[query_key]
+                if external:
+                    local = fuzzy_hits or tuple(FuzzyMatch(p, mention.text, 1.0) for p in candidates)
+                    fuzzy_hits = tuple(sorted((*local, *external), key=lambda h: -h.score))
+                    candidates = [hit.place for hit in fuzzy_hits]
             candidates = candidates[:20]
             selected: Place | None = None
             evidence = [{"quote": mention.text, "basis": match_type}, {"quote": "", "basis": source_note}]
@@ -263,13 +290,22 @@ class Resolver:
                     method = "human review"
                     evidence.append({"quote": "", "basis": "Prior correction with matching context"})
             if not selected and candidates:
-                state_candidates = [p for p in candidates if p.kind == "state"]
-                if (match_type == "exact alias" and len(state_candidates) == 1
+                state_candidates = [p for p in exact_candidates if p.kind == "state"]
+                regions = [p for p in exact_candidates if p.kind in {"coast", "region", "historical region", "plateau"}]
+                rivers = [p for p in exact_candidates if p.kind == "river"]
+                prefix = text[max(0, mention.start - 35):mention.start].lower()
+                if len(rivers) == 1 and re.search(r"(?:on|along|across|down|banks of)\s+(?:the\s+)?$", prefix):
+                    selected, method = rivers[0], "river context"
+                elif len(regions) == 1 and mode == "document":
+                    selected, method = regions[0], "geographic region"
+                if selected:
+                    pass
+                elif (match_type == "exact alias" and len(state_candidates) == 1
                         and normalize(mention.text) in ADMIN_TERMS
                         and normalize(mention.text) not in {"delhi", "chandigarh", "puducherry"}):
                     selected, method = state_candidates[0], "administrative name"
-                elif len(candidates) == 1 and match_type == "exact alias" and len(normalize(mention.text)) > 4:
-                    selected, method = candidates[0], "unambiguous alias"
+                elif len(exact_candidates) == 1 and len(normalize(mention.text)) > 4:
+                    selected, method = exact_candidates[0], "unambiguous alias"
                 elif use_context:
                     # Weaker spelling alternatives must not block a strong context match.
                     eligible = {hit.place.id for hit in fuzzy_hits if hit.score >= fuzzy_hits[0].score - 0.03} if fuzzy_hits else {p.id for p in candidates}
@@ -282,7 +318,12 @@ class Resolver:
                         if len(country_matches) == 1 and not state_matches:
                             selected, method = country_matches[0], "country evidence"
                             evidence.append({"quote": countries[normalize(selected.country)], "basis": "Country named in document"})
-                if not selected and fuzzy_hits:
+                if not selected and exact_candidates:
+                    cities = sorted((p for p in exact_candidates if p.kind == "city"), key=lambda p: -p.population)
+                    if cities and cities[0].population >= 100000 and (len(cities) == 1 or cities[0].population >= 10 * max(1, cities[1].population)):
+                        selected, method = cities[0], "city prominence suggestion"
+                        evidence.append({"quote": mention.text, "basis": "Exact historical/current alias of the dominant city; other namesakes retained for review"})
+                if not selected and fuzzy_hits and not exact_candidates:
                     first = fuzzy_hits[0]
                     runner_up = fuzzy_hits[1].score if len(fuzzy_hits) > 1 else 0
                     rivals = [hit for hit in fuzzy_hits[1:] if hit.place.id in self.catalog.places
@@ -315,13 +356,13 @@ class Resolver:
                 selected, method = None, "below 80% — review suggestions"
             output.append({
                 "mention": mention.text, "start": mention.start, "end": mention.end,
-                "source": mention.source, "status": ("suggested" if (score < 100 or method == "LLM suggestion") and method != "human review" else "resolved") if selected else "unresolved",
+                "source": mention.source, "input_mode": mode, "status": ("suggested" if (score < 100 or method in {"LLM suggestion", "city prominence suggestion"}) and method != "human review" else "resolved") if selected else "unresolved",
                 "selected": selected.public() if selected else None,
                 "candidates": [{**p.public(), "score": scores.get(p.id, 100.0)} for p in candidates], "method": method,
                 "score": score, "score_label": "spelling similarity", "threshold": 80,
                 "suggestions_required": score < 80,
                 "evidence": evidence,
-                "needs_review": not selected or ((score < 100 or method == "LLM suggestion") and method != "human review"),
+                "needs_review": not selected or ((score < 100 or method in {"LLM suggestion", "city prominence suggestion"}) and method != "human review"),
             })
         return output
 
